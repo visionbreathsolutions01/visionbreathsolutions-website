@@ -1,0 +1,62 @@
+/* Global variables for the local component level */
+:root {
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary-glow: rgba(124, 58, 237, 0.4);
+}
+
+/* Base resets for components */
+section {
+  position: relative;
+  width: 100%;
+}
+
+h2 {
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+p {
+  color: var(--text-muted);
+}
+
+/* Glassmorphism Classes (Global) */
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-md border border-white/30 rounded-[2rem];
+}
+
+.glass-panel-dark {
+  @apply bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-[2rem];
+}
+
+/* Modern Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Logo styling */
+.logo {
+  height: 3.5rem;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo {
+    height: 2.5rem;
+  }
+}
