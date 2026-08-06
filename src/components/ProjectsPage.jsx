@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import React, { useState, useEffect, useCallback, memo } from 'react';
-=======
-import React, { useState, useEffect, memo } from 'react';
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ExternalLink, Filter, Code2, Monitor, Smartphone, Cloud } from 'lucide-react';
 import SEO from './SEO';
 
-<<<<<<< HEAD
 /**
  * Hook that checks an ordered list of URLs and returns the first one that responds.
  * Falls back to the first URL in the list while checking / if all fail.
@@ -57,9 +52,6 @@ const ProjectLink = ({ project }) => {
     </a>
   );
 };
-
-=======
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
 const ProjectsPage = memo(() => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -84,20 +76,12 @@ const ProjectsPage = memo(() => {
       description: "A secure, high-performance website for pharmacy to order medicines online.",
       image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=2069&auto=format&fit=crop",
       technologies: ["React JS", "Python"],
-<<<<<<< HEAD
       liveUrls: ["https://dev.newbalanpharmacy.com/", "https://newbalanpharmacy.com/"]
-=======
-      liveUrl: "https://newbalanpharmacy.com/"
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
     }
   ];
 
   return (
-<<<<<<< HEAD
     <div className="pt-[72px] min-h-screen bg-white font-sans text-slate-900">
-=======
-    <div className="pt-16 sm:pt-24 min-h-screen bg-slate-50 font-sans text-slate-900">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
       <SEO
         title="Our Portfolio & Projects"
         description="Explore enterprise software projects, custom web platforms, pharmacy management systems, and client success stories built by Vision Breath Solutions."
@@ -124,11 +108,7 @@ const ProjectsPage = memo(() => {
       />
 
       {/* Header Section */}
-<<<<<<< HEAD
       <section className="pt-[37px] sm:pt-[77px] pb-[37px] sm:pb-[61px] bg-white border-b border-slate-100">
-=======
-      <section className="py-10 sm:py-20 bg-white border-b border-slate-100">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
         <div className="container-xl text-center">
           <motion.h1
             initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -197,20 +177,7 @@ const ProjectsPage = memo(() => {
                       ))}
                     </div>
 
-<<<<<<< HEAD
                     <ProjectLink project={project} />
-=======
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 transition-colors mt-auto group/link"
-                      aria-label={`Visit live website of ${project.title}`}
-                    >
-                      Visit Live Project
-                      <ExternalLink size={16} className="transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                    </a>
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
                   </div>
                 </motion.div>
               ))}

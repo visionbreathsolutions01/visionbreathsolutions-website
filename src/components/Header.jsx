@@ -112,22 +112,14 @@ const Header = () => {
             </span>
             <span
               style={{
-<<<<<<< HEAD
                 fontWeight: 900,
-=======
-                fontWeight: 600,
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
                 fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)",
                 letterSpacing: "0.07em",
                 color: "#64748b",
                 whiteSpace: "nowrap",
               }}
             >
-<<<<<<< HEAD
               SOLUTIONS. PVT. LTD.
-=======
-              SOLUTIONS. PVT. LTD
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
             </span>
           </span>
         </Link>

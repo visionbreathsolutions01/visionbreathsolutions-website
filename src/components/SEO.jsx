@@ -83,7 +83,6 @@ const SEO = ({
           "@id": `${DEFAULT_DOMAIN}/#organization`
         },
         "inLanguage": "en-US"
-<<<<<<< HEAD
       },
       {
         "@type": "WebPage",
@@ -98,8 +97,6 @@ const SEO = ({
           "@id": `${DEFAULT_DOMAIN}/#organization`
         },
         "inLanguage": "en-US"
-=======
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
       }
     ]
   };

@@ -9,22 +9,14 @@ const PrivacyPolicy = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
     <div className="pt-[72px] min-h-screen bg-slate-900">
-=======
-    <div className="min-h-screen bg-slate-50">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
       <SEO
         title="Privacy Policy"
         description="Official Privacy Policy for Vision Breath Solutions Pvt. Ltd., outlining data collection, security standards, privacy protection, and user rights."
         path="/privacy"
       />
       {/* Header Banner */}
-<<<<<<< HEAD
       <div className="bg-slate-900 pt-10 pb-12">
-=======
-      <div className="bg-slate-900 pt-28 pb-12">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
         <div className="container-xl">
           <Link to="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm mb-6 transition-colors">
             <ArrowLeft size={16} /> Back to Home

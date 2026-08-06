@@ -9,11 +9,7 @@ const ContactPage = memo(() => {
   }, []);
 
   return (
-<<<<<<< HEAD
     <div className="pt-[72px] min-h-screen bg-white font-sans text-slate-900">
-=======
-    <div className="min-h-screen bg-slate-50">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
       <SEO
         title="Contact Us"
         description="Get in touch with Vision Breath Solutions Pvt. Ltd. Reach out via email, phone (+91 9963416422), or visit our Vijayawada office for custom software inquiries."
@@ -48,23 +44,15 @@ const ContactPage = memo(() => {
         }}
       />
       {/* Hero Banner */}
-<<<<<<< HEAD
       <section className="relative pt-[37px] sm:pt-[77px] pb-[37px] sm:pb-[61px] overflow-hidden bg-white border-b border-slate-100">
         <div className="absolute inset-0 bg-brand-gradient opacity-[0.02] pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[450px] bg-brand-400/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-400/10 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/3" />
-=======
-      <section className="relative pt-20 sm:pt-32 pb-10 sm:pb-16 overflow-hidden bg-gradient-to-br from-slate-900 via-brand-950 to-slate-900">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]" />
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-brand-600/20 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[100px]" />
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
         <div className="container-xl relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-<<<<<<< HEAD
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-100 mb-6"
           >
             <span className="flex h-2 w-2 relative">
@@ -72,32 +60,16 @@ const ContactPage = memo(() => {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-600" />
             </span>
             <span className="text-xs font-semibold text-brand-700 tracking-wide uppercase">We're Here to Help</span>
-=======
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 mb-6"
-          >
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-400" />
-            </span>
-            <span className="text-xs font-semibold text-white/80 tracking-wide uppercase">We're Here to Help</span>
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-<<<<<<< HEAD
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 mb-4"
           >
             Get In{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">
-=======
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4"
-          >
-            Get In{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-teal-400">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               Touch
             </span>
           </motion.h1>
@@ -106,11 +78,7 @@ const ContactPage = memo(() => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-<<<<<<< HEAD
             className="text-slate-600 text-lg max-w-xl mx-auto"
-=======
-            className="text-slate-300 text-lg max-w-xl mx-auto"
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
           >
             Ready to build something extraordinary? Reach out and let's make it happen.
           </motion.p>
@@ -118,11 +86,7 @@ const ContactPage = memo(() => {
       </section>
 
       {/* Contact Section */}
-<<<<<<< HEAD
       <section className="py-16 sm:py-24 relative overflow-hidden bg-white">
-=======
-      <section className="py-16 sm:py-24 relative overflow-hidden">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-50 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3" />
 
         <div className="container-xl relative z-10">
@@ -244,8 +208,6 @@ const ContactPage = memo(() => {
                     <Phone size={20} />
                     Call Us Directly
                   </a>
-<<<<<<< HEAD
-
                   {/* LinkedIn Button */}
                   <a
                     href="https://www.linkedin.com/in/vision-breath-solutions-pvt-ltd-b74b2a421/"
@@ -269,8 +231,6 @@ const ContactPage = memo(() => {
                     </svg>
                     Connect on LinkedIn
                   </a>
-=======
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
                 </div>
               </div>
             </motion.div>

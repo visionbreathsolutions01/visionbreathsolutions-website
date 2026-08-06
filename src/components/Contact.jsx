@@ -5,11 +5,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 const Contact = () => {
 
   return (
-<<<<<<< HEAD
     <section id="contact" className="py-16 sm:py-24 bg-white relative overflow-hidden">
-=======
-    <section id="contact" className="py-24 bg-slate-50 relative overflow-hidden">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-50 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
 

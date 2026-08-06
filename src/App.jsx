@@ -1,8 +1,5 @@
 import React, { useEffect, Suspense, lazy } from "react";
-<<<<<<< HEAD
 import { MotionConfig } from "framer-motion";
-=======
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -22,11 +19,7 @@ const TermsOfService = lazy(() => import("./components/TermsOfService"));
 
 // Lightweight loader fallback for Suspense
 const PageLoader = () => (
-<<<<<<< HEAD
   <div className="min-h-screen bg-white flex items-center justify-center" aria-live="polite" aria-busy="true">
-=======
-  <div className="min-h-screen bg-slate-50 flex items-center justify-center" aria-live="polite" aria-busy="true">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
     <div className="w-10 h-10 border-4 border-slate-200 border-t-brand-600 rounded-full animate-spin"></div>
   </div>
 );
@@ -130,16 +123,15 @@ const Home = () => {
 };
 
 function App() {
-<<<<<<< HEAD
   useEffect(() => {
     // Preload lazy page components during idle time so navigation is instantaneous on all devices
     const preloadPages = () => {
-      import("./components/AboutPage").catch(() => {});
-      import("./components/ServicesPage").catch(() => {});
-      import("./components/ProjectsPage").catch(() => {});
-      import("./components/ContactPage").catch(() => {});
-      import("./components/PrivacyPolicy").catch(() => {});
-      import("./components/TermsOfService").catch(() => {});
+      import("./components/AboutPage").catch(() => { });
+      import("./components/ServicesPage").catch(() => { });
+      import("./components/ProjectsPage").catch(() => { });
+      import("./components/ContactPage").catch(() => { });
+      import("./components/PrivacyPolicy").catch(() => { });
+      import("./components/TermsOfService").catch(() => { });
     };
 
     if (window.requestIdleCallback) {
@@ -151,50 +143,44 @@ function App() {
 
   return (
     <MotionConfig reducedMotion="always">
-=======
-  return (
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
-    <div className="overflow-x-hidden w-full">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-600 focus:text-white focus:rounded-lg focus:shadow-xl focus:outline-none"
-      >
-        Skip to main content
-      </a>
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<><Header /><main id="main-content"><AboutPage /></main><Footer /></>} />
-          <Route path="/services" element={<><Header /><main id="main-content"><ServicesPage /></main><Footer /></>} />
-          <Route path="/projects" element={<><Header /><main id="main-content"><ProjectsPage /></main><Footer /></>} />
-          <Route path="/contact" element={<><Header /><main id="main-content"><ContactPage /></main><Footer /></>} />
-          <Route
-            path="/privacy"
-            element={
-              <div className="min-h-screen bg-white">
-                <Header />
-                <main id="main-content"><PrivacyPolicy /></main>
-                <Footer />
-              </div>
-            }
-          />
-          <Route
-            path="/terms"
-            element={
-              <div className="min-h-screen bg-white">
-                <Header />
-                <main id="main-content"><TermsOfService /></main>
-                <Footer />
-              </div>
-            }
-          />
-        </Routes>
-      </Suspense>
-    </div>
-<<<<<<< HEAD
+      <div className="overflow-x-hidden w-full">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-600 focus:text-white focus:rounded-lg focus:shadow-xl focus:outline-none"
+        >
+          Skip to main content
+        </a>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<><Header /><main id="main-content"><AboutPage /></main><Footer /></>} />
+            <Route path="/services" element={<><Header /><main id="main-content"><ServicesPage /></main><Footer /></>} />
+            <Route path="/projects" element={<><Header /><main id="main-content"><ProjectsPage /></main><Footer /></>} />
+            <Route path="/contact" element={<><Header /><main id="main-content"><ContactPage /></main><Footer /></>} />
+            <Route
+              path="/privacy"
+              element={
+                <div className="min-h-screen bg-white">
+                  <Header />
+                  <main id="main-content"><PrivacyPolicy /></main>
+                  <Footer />
+                </div>
+              }
+            />
+            <Route
+              path="/terms"
+              element={
+                <div className="min-h-screen bg-white">
+                  <Header />
+                  <main id="main-content"><TermsOfService /></main>
+                  <Footer />
+                </div>
+              }
+            />
+          </Routes>
+        </Suspense>
+      </div>
     </MotionConfig>
-=======
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
   );
 }
 

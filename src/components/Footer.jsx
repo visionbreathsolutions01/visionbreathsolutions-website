@@ -89,7 +89,6 @@ const Footer = () => {
                 <Phone size={18} className="text-brand-400 flex-shrink-0" />
                 <a href="tel:+91 9963416422" className="text-slate-400 hover:text-brand-400 text-sm transition-colors">+91 9963416422</a>
               </li>
-<<<<<<< HEAD
               <li className="pt-2 flex flex-col gap-2.5">
                 <a
                   href="https://www.linkedin.com/in/vision-breath-solutions-pvt-ltd-b74b2a421/"
@@ -115,19 +114,12 @@ const Footer = () => {
                   </svg>
                   Connect on LinkedIn
                 </a>
-=======
-              <li className="pt-2">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
                 <a
                   href="https://www.instagram.com/visionbreathsolutions_01/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 px-4 py-2 rounded-lg bg-slate-800 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-500 text-slate-400 hover:text-white text-sm font-medium transition-all duration-300 group"
                 >
-<<<<<<< HEAD
-=======
-                  {/* Instagram icon SVG */}
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

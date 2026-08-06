@@ -35,11 +35,7 @@ const AboutPage = memo(() => {
   ];
 
   return (
-<<<<<<< HEAD
     <div className="pt-[72px] min-h-screen bg-white font-sans text-slate-900">
-=======
-    <div className="pt-16 sm:pt-24 min-h-screen bg-slate-50 font-sans text-slate-900">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
       <SEO
         title="About Us"
         description="Learn about Vision Breath Solutions Pvt. Ltd., our mission, core values, engineering principles, and team dedicated to architecting digital future."
@@ -65,7 +61,6 @@ const AboutPage = memo(() => {
         }}
       />
       
-<<<<<<< HEAD
       {/* Managing Director's Message */}
       <section className="py-12 sm:py-20 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-brand-400/5 rounded-full blur-[120px] -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
@@ -176,9 +171,6 @@ const AboutPage = memo(() => {
           </motion.div>
         </div>
       </section>
-
-=======
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
       {/* Hero Section */}
       <section className="py-8 sm:py-12 lg:py-16 relative overflow-hidden bg-white">
         <div className="absolute inset-0 bg-brand-gradient opacity-[0.03] pointer-events-none"></div>
@@ -189,12 +181,8 @@ const AboutPage = memo(() => {
  
             <motion.h1 
               initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-<<<<<<< HEAD
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-=======
-              animate={{ opacity: 1, y: 0 }}
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5, delay: 0.1 }}
               className="text-h1 lg:text-hero mb-4 text-slate-900"
             >
@@ -204,12 +192,8 @@ const AboutPage = memo(() => {
             
             <motion.p 
               initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-<<<<<<< HEAD
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-=======
-              animate={{ opacity: 1, y: 0 }}
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5, delay: 0.2 }}
               className="text-xl text-slate-600 leading-relaxed mb-6 sm:mb-10"
             >
@@ -291,11 +275,7 @@ const AboutPage = memo(() => {
             Let's discuss how our engineering expertise can help you build scalable, secure, and future-proof solutions.
           </p>
           <div className="flex justify-center gap-4">
-<<<<<<< HEAD
             <Link to="/contact" className="btn-primary bg-white text-brand-900 hover:bg-slate-50">
-=======
-            <Link to="/#contact" className="btn-primary bg-white text-brand-900 hover:bg-slate-50">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               Contact Us Today
               <ChevronRight size={18} />
             </Link>

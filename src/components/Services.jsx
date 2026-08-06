@@ -42,11 +42,7 @@ const item = {
 
 const Services = () => {
   return (
-<<<<<<< HEAD
     <section className="py-16 sm:py-24 bg-white relative">
-=======
-    <section className="py-24 bg-slate-50 relative">
->>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
       <div className="container-xl relative z-10">
 
         {/* Header */}
