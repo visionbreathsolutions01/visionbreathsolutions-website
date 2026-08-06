@@ -68,7 +68,11 @@ const ServicesPage = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <div className="pt-[72px] min-h-screen bg-slate-900 font-sans text-slate-900">
+=======
+    <div className="pt-16 sm:pt-24 min-h-screen bg-slate-50 font-sans text-slate-900">
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
       <SEO
         title="Our Engineering & Software Services"
         description="Comprehensive custom software development, mobile application creation, web engineering, cloud infrastructure, AI automation, and technical support services."
@@ -104,6 +108,7 @@ const ServicesPage = () => {
               "serviceType": "Software Development Services",
               "areaServed": "Global",
               "description": "Custom enterprise software development, mobile apps, website engineering, cloud architecture, and AI automation solutions."
+<<<<<<< HEAD
             },
             {
               "@type": "WebPage",
@@ -146,13 +151,19 @@ const ServicesPage = () => {
                   }
                 }
               ]
+=======
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
             }
           ]
         }}
       />
       
       {/* Hero Section */}
+<<<<<<< HEAD
       <section className="pt-[37px] sm:pt-[77px] pb-[37px] sm:pb-[61px] relative overflow-hidden bg-slate-900">
+=======
+      <section className="py-6 sm:py-20 lg:py-32 relative overflow-hidden bg-slate-900">
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-brand-600/20 blur-[120px] rounded-full pointer-events-none"></div>
         

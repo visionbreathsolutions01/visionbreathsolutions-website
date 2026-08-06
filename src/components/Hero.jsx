@@ -1,7 +1,11 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { motion } from 'framer-motion';
+<<<<<<< HEAD
 import { ArrowRight, Code2, ShieldCheck, Zap } from 'lucide-react';
+=======
+import { ArrowRight, Code2, Rocket, ShieldCheck, Zap } from 'lucide-react';
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -15,6 +19,7 @@ const Hero = () => {
   };
 
   return (
+<<<<<<< HEAD
     <section id="home" className="relative min-h-[100svh] flex items-center pt-[72px] pb-8 sm:pt-24 sm:pb-12 overflow-hidden bg-white">
       {/* Abstract Background */}
       <div className="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.015] mix-blend-overlay"></div>
@@ -23,14 +28,29 @@ const Hero = () => {
       {/* Decorative Blur Orbs */}
       <motion.div
         animate={{
+=======
+    <section id="home" className="relative min-h-[100svh] flex items-center pt-20 pb-10 sm:pt-28 sm:pb-20 overflow-hidden bg-slate-50">
+      {/* Abstract Background */}
+      <div className="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.015] mix-blend-overlay"></div>
+      <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-brand-50 to-transparent z-0"></div>
+      
+      {/* Decorative Blur Orbs */}
+      <motion.div 
+        animate={{ 
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
           scale: [1, 1.1, 1],
           opacity: [0.3, 0.5, 0.3],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-1/4 -right-64 w-[600px] h-[600px] bg-brand-400/20 rounded-full blur-[120px] z-0"
       />
+<<<<<<< HEAD
       <motion.div
         animate={{
+=======
+      <motion.div 
+        animate={{ 
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
           scale: [1, 1.2, 1],
           opacity: [0.2, 0.4, 0.2],
         }}
@@ -40,10 +60,17 @@ const Hero = () => {
 
       <div className="container-xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
+<<<<<<< HEAD
 
           {/* Left Content */}
           <div className="max-w-3xl">
             <motion.div
+=======
+          
+          {/* Left Content */}
+          <div className="max-w-3xl">
+            <motion.div 
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -56,12 +83,17 @@ const Hero = () => {
               <span className="text-xs font-semibold text-slate-700 tracking-wide uppercase">Innovating Enterprise Solutions</span>
             </motion.div>
 
+<<<<<<< HEAD
             <motion.h1
+=======
+            <motion.h1 
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-h1 lg:text-hero mb-3 sm:mb-6 text-slate-900"
             >
+<<<<<<< HEAD
               Vision Breath Solutions PVT.LTD. <br className="hidden sm:block" />
               {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">
                 AI & Software Engineering
@@ -69,6 +101,15 @@ const Hero = () => {
             </motion.h1>
 
             <motion.p
+=======
+              Vision Breath Solutions <br className="hidden sm:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">
+                AI & Software Engineering
+              </span>
+            </motion.h1>
+
+            <motion.p 
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -77,7 +118,11 @@ const Hero = () => {
               Vision Breath Solutions Pvt. Ltd. builds scalable, secure, and high-performance digital infrastructure for modern enterprises. From AI-driven solutions and mobile apps to custom web platforms.
             </motion.p>
 
+<<<<<<< HEAD
             <motion.div
+=======
+            <motion.div 
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -93,7 +138,11 @@ const Hero = () => {
             </motion.div>
 
             {/* Trust Indicators */}
+<<<<<<< HEAD
             <motion.div
+=======
+            <motion.div 
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
@@ -117,6 +166,7 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative lg:ml-auto w-full max-w-lg"
           >
+<<<<<<< HEAD
             {/* Main Window with continuous floating animation */}
             <motion.div
               animate={{ y: [-8, 8, -8] }}
@@ -124,6 +174,10 @@ const Hero = () => {
               whileHover={{ scale: 1.02, y: -10 }}
               className="relative bg-slate-900 rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden z-20 transition-all duration-300 hover:border-slate-600 hover:shadow-brand-500/10"
             >
+=======
+            {/* Main Window */}
+            <div className="relative bg-slate-900 rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden z-20">
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
               {/* Window Header */}
               <div className="flex items-center px-4 py-3 border-b border-slate-800 bg-slate-900/50">
                 <div className="flex gap-2">
@@ -135,9 +189,15 @@ const Hero = () => {
                   <Code2 size={14} /> main.tsx
                 </div>
               </div>
+<<<<<<< HEAD
 
               {/* Code Content */}
               <div className="p-6 font-mono text-sm leading-relaxed text-slate-300 select-none">
+=======
+              
+              {/* Code Content */}
+              <div className="p-6 font-mono text-sm leading-relaxed text-slate-300">
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
                 <div className="flex">
                   <span className="text-slate-600 mr-4 select-none">1</span>
                   <span><span className="text-brand-400">const</span> <span className="text-yellow-200">VISION_BREATH_SOLUTIONS_PVT_LTD</span> <span className="text-slate-400">=</span> ( ) <span className="text-brand-400">=&gt;</span> {'{'}</span>
@@ -167,6 +227,24 @@ const Hero = () => {
                   <span>{'}'}</span>
                 </div>
               </div>
+<<<<<<< HEAD
+=======
+            </div>
+
+            {/* Floating Elements */}
+            <motion.div 
+              animate={{ y: [-10, 10, -10] }} 
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 z-30 flex items-center gap-3"
+            >
+              <div className="w-10 h-10 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center">
+                <Rocket size={20} />
+              </div>
+              <div>
+                <div className="text-sm font-bold text-slate-900">99.99%</div>
+                <div className="text-xs text-slate-500 font-medium">Uptime SLA</div>
+              </div>
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
             </motion.div>
           </motion.div>
 

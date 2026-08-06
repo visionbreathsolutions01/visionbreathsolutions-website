@@ -1,5 +1,8 @@
 import React, { useEffect, Suspense, lazy } from "react";
+<<<<<<< HEAD
 import { MotionConfig } from "framer-motion";
+=======
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -19,7 +22,11 @@ const TermsOfService = lazy(() => import("./components/TermsOfService"));
 
 // Lightweight loader fallback for Suspense
 const PageLoader = () => (
+<<<<<<< HEAD
   <div className="min-h-screen bg-white flex items-center justify-center" aria-live="polite" aria-busy="true">
+=======
+  <div className="min-h-screen bg-slate-50 flex items-center justify-center" aria-live="polite" aria-busy="true">
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
     <div className="w-10 h-10 border-4 border-slate-200 border-t-brand-600 rounded-full animate-spin"></div>
   </div>
 );
@@ -123,6 +130,7 @@ const Home = () => {
 };
 
 function App() {
+<<<<<<< HEAD
   useEffect(() => {
     // Preload lazy page components during idle time so navigation is instantaneous on all devices
     const preloadPages = () => {
@@ -143,6 +151,9 @@ function App() {
 
   return (
     <MotionConfig reducedMotion="always">
+=======
+  return (
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
     <div className="overflow-x-hidden w-full">
       <a
         href="#main-content"
@@ -180,7 +191,10 @@ function App() {
         </Routes>
       </Suspense>
     </div>
+<<<<<<< HEAD
     </MotionConfig>
+=======
+>>>>>>> c09e5f92dda60d2ba98bc07dbb35aec977247855
   );
 }
 
