@@ -44,7 +44,7 @@ const SEO = ({
         },
         "image": `${DEFAULT_DOMAIN}/favicon.png`,
         "description": metaDescription,
-        "email": "visionbreathsolutions@gmail.com",
+        "email": "contact@visionbreathsolutions.com",
         "telephone": "+91-9963416422",
         "priceRange": "$$",
         "address": {

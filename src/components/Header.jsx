@@ -1,225 +1,150 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, ChevronRight } from "lucide-react";
-import vbsLogo from "../assests/vbs-logo.png";
-import vbsLogoNav from "../assests/vbs-logo-nav.png";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import logo from "../assests/vbs-logo-nav.png";
+import { nav, company } from "../lib/content";
 
-const NAV_HEIGHT = 72; // px — single source of truth
-
-const navLinks = [
-  { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
-  { label: "Services", path: "/services" },
-  { label: "Projects", path: "/projects" },
-  { label: "Contact", path: "/contact" },
-];
-
+/**
+ * Transparent over the hero, hairline + blur once scrolled.
+ * Mobile menu is a full-height sheet rather than a dropdown so long nav
+ * lists never collide with page content behind them.
+ */
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 28, mass: 0.4 });
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => setOpen(false), [pathname]);
+
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
-
-  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
-
-  const goContact = () => {
-    navigate("/contact");
-    setMenuOpen(false);
-  };
+  }, [open]);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${menuOpen
-        ? "bg-white"
-        : scrolled
-          ? "bg-white/95 backdrop-blur-xl border-b border-slate-100 shadow-nav"
-          : "bg-white/80 backdrop-blur-md"
-        }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled || open
+          ? "bg-ink-950/85 backdrop-blur-xl border-b border-ink-800 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.6)]"
+          : "bg-ink-950/40 backdrop-blur-md border-b border-transparent"
+      }`}
     >
-      {/* ── Main navbar row ── */}
-      <div
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: "0 clamp(16px, 3vw, 48px)",
-          height: `${NAV_HEIGHT}px`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "24px",
-        }}
-      >
+      {/* Reading-progress beam along the header's bottom edge */}
+      <motion.div
+        style={{ scaleX: progress }}
+        className="absolute bottom-0 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-brand-500 via-violet-500 to-sky-400"
+        aria-hidden="true"
+      />
 
-        {/* ── Logo + Brand Name ── */}
-        <Link
-          to="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "1px",
-            flexShrink: 0,
-            textDecoration: "none",
-          }}
-        >
-          <span
-            className="flex items-center"
-            style={{
-              height: "48px",
-              flexShrink: 0,
-            }}
-          >
-            <img
-              src={vbsLogoNav}
-              alt="Vision Breath Solutions"
-              style={{
-                height: "100%",
-                width: "auto",
-                objectFit: "contain",
-              }}
-            />
-          </span>
+      <div className="shell flex h-[68px] items-center justify-between gap-6">
 
-          {/* Brand text */}
-          <span
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              lineHeight: 1.25,
-            }}
-          >
-            <span
-              style={{
-                fontWeight: 900,
-                fontSize: "clamp(0.875rem, 1.4vw, 1.05rem)",
-                letterSpacing: "-0.01em",
-                color: "#0f172a",
-                whiteSpace: "nowrap",
-              }}
-            >
-              VISION BREATH
+        {/* Brand */}
+        <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label={`${company.legalName} — home`}>
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-white p-1"><img src={logo} alt="" className="h-full w-auto object-contain" width="36" height="36" /></span>
+          <span className="hidden sm:flex flex-col leading-none">
+            <span className="font-display text-[0.9375rem] font-bold tracking-[-0.02em] text-white">
+              Vision Breath
             </span>
-            <span
-              style={{
-                fontWeight: 900,
-                fontSize: "clamp(0.65rem, 0.9vw, 0.75rem)",
-                letterSpacing: "0.07em",
-                color: "#64748b",
-                whiteSpace: "nowrap",
-              }}
-            >
-              SOLUTIONS. PVT. LTD.
+            <span className="mt-1 font-mono text-[0.5625rem] uppercase tracking-[0.16em] text-ink-400">
+              Solutions Pvt. Ltd.
             </span>
           </span>
         </Link>
 
-        {/* ── Desktop Navigation ── */}
-        <nav
-          aria-label="Main Navigation"
-          style={{
-            display: "none",
-            alignItems: "center",
-            gap: "4px",
-          }}
-          className="md:!flex"
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              style={{ textDecoration: "none" }}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${location.pathname === link.path
-                ? "text-brand-600 bg-brand-50"
-                : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-                }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Nav + CTA grouped on the right */}
+        <div className="flex items-center gap-4 shrink-0">
+          <nav aria-label="Main" className="hidden md:flex items-center gap-1">
+            {nav.map((item, i) => (
+              <motion.span
+                key={item.path}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.15 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              >
+              <NavLink
+                to={item.path}
+                end={item.path === "/"}
+                className={({ isActive }) =>
+                  `nav-link rounded px-3 py-2 text-sm transition-colors duration-200 ${
+                    isActive ? "nav-active text-white font-medium" : "text-ink-400 hover:text-white"
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+              </motion.span>
+            ))}
+          </nav>
 
-        {/* ── CTA + Mobile Hamburger ── */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
-          <button
-            onClick={goContact}
-            className="hidden md:inline-flex btn-primary text-sm px-5 py-2.5"
-            aria-label="Get a custom quote"
-          >
-            Get a Quote
-            <ChevronRight size={14} />
-          </button>
+          <span className="hidden md:block h-5 w-px bg-ink-700" aria-hidden="true" />
+
+          <Link to="/contact" className="hidden md:inline-flex btn-primary">
+            Start a project
+            <ArrowUpRight size={15} strokeWidth={2.2} />
+          </Link>
 
           <button
-            className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 transition-colors"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? "Close menu" : "Open navigation menu"}
-            aria-expanded={menuOpen}
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="md:hidden -mr-1.5 grid h-10 w-10 place-items-center rounded-md text-ink-200 hover:bg-ink-800 transition-colors"
           >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* ── Mobile Menu ── */}
+      {/* Mobile sheet */}
       <div
-        className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          }`}
-        style={{ top: `${NAV_HEIGHT}px` }}
+        id="mobile-nav"
+        hidden={!open}
+        className="md:hidden fixed inset-x-0 bottom-0 top-[68px] bg-ink-950 overflow-y-auto"
       >
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm"
-          onClick={() => setMenuOpen(false)}
-        />
-
-        {/* Slide-down panel */}
-        <div
-          className={`relative bg-white shadow-xl border-t border-slate-100 pb-6 pt-2 transition-transform duration-300 ${menuOpen ? "translate-y-0" : "-translate-y-4"
-            }`}
-        >
-          <div
-            style={{
-              maxWidth: "1400px",
-              margin: "0 auto",
-              padding: "0 clamp(16px, 3vw, 48px)",
-              display: "flex",
-              flexDirection: "column",
-              gap: "4px",
-            }}
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                style={{ textDecoration: "none" }}
-                className={`px-4 py-3.5 rounded-xl text-base font-semibold transition-all duration-200 ${location.pathname === link.path
-                  ? "text-brand-600 bg-brand-50"
-                  : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
-                  }`}
+        <div className="shell flex min-h-full flex-col py-8">
+          <nav aria-label="Mobile" className="flex flex-col">
+            {nav.map((item, i) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === "/"}
+                className={({ isActive }) =>
+                  `flex items-center justify-between border-b border-ink-800 py-5 font-display text-2xl tracking-[-0.03em] transition-colors ${
+                    isActive ? "text-white" : "text-ink-500"
+                  }`
+                }
               >
-                {link.label}
-              </Link>
+                {item.label}
+                <span className="font-mono text-[0.625rem] text-ink-600">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </NavLink>
             ))}
+          </nav>
 
-            <div style={{ paddingTop: "16px", marginTop: "8px", borderTop: "1px solid #f1f5f9" }}>
-              <button
-                onClick={goContact}
-                className="btn-primary flex items-center justify-center gap-2 w-full py-3.5 text-base"
-              >
-                Get a Quote <ChevronRight size={16} />
-              </button>
-            </div>
+          <Link to="/contact" className="btn-primary btn-lg mt-8 w-full">
+            Start a project
+            <ArrowUpRight size={16} strokeWidth={2.2} />
+          </Link>
+
+          <div className="mt-auto pt-10 font-mono text-xs text-ink-500">
+            <a href={`mailto:${company.email}`} className="block hover:text-white transition-colors">
+              {company.email}
+            </a>
+            <a href={`tel:${company.phoneHref}`} className="mt-2 block hover:text-white transition-colors">
+              {company.phone}
+            </a>
           </div>
         </div>
       </div>

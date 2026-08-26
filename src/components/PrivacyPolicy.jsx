@@ -9,26 +9,26 @@ const PrivacyPolicy = () => {
   }, []);
 
   return (
-    <div className="pt-[72px] min-h-screen bg-slate-900">
+    <div className="pt-[68px] min-h-screen bg-ink-900">
       <SEO
         title="Privacy Policy"
         description="Official Privacy Policy for Vision Breath Solutions Pvt. Ltd., outlining data collection, security standards, privacy protection, and user rights."
         path="/privacy"
       />
       {/* Header Banner */}
-      <div className="bg-slate-900 pt-10 pb-12">
-        <div className="container-xl">
-          <Link to="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm mb-6 transition-colors">
+      <div className="border-b border-ink-800 pt-14 pb-12">
+        <div className="shell">
+          <Link to="/" className="inline-flex items-center gap-2 text-ink-400 hover:text-white text-sm mb-8 transition-colors">
             <ArrowLeft size={16} /> Back to Home
           </Link>
-          <h1 className="text-3xl sm:text-4xl font-black text-white mb-2">Privacy Policy</h1>
-          <p className="text-slate-400 text-sm">Last updated: June 27, 2026</p>
+          <h1 className="text-h1 mb-3">Privacy Policy</h1>
+          <p className="font-mono text-label uppercase text-ink-400">Last updated: June 27, 2026</p>
         </div>
       </div>
 
       {/* Content */}
-      <div className="container-xl py-12 sm:py-16">
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl border border-slate-100 shadow-sm p-8 sm:p-12 space-y-10 text-slate-600 text-[15px] leading-relaxed">
+      <div className="shell py-12 sm:py-16">
+        <div className="max-w-3xl space-y-10 text-ink-300 text-[15px] leading-relaxed">
 
           <p>
             This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
@@ -39,12 +39,12 @@ const PrivacyPolicy = () => {
 
           {/* Section 1 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Interpretation and Definitions</h2>
-            <h3 className="font-bold text-slate-800 mb-2">Interpretation</h3>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Interpretation and Definitions</h2>
+            <h3 className="font-bold text-ink-100 mb-2">Interpretation</h3>
             <p className="mb-4">
               The words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.
             </p>
-            <h3 className="font-bold text-slate-800 mb-2">Definitions</h3>
+            <h3 className="font-bold text-ink-100 mb-2">Definitions</h3>
             <p className="mb-4">For the purposes of this Privacy Policy:</p>
             <ul className="space-y-3 list-none">
               {[
@@ -62,7 +62,7 @@ const PrivacyPolicy = () => {
                 ["You", "means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable."],
               ].map(([term, def]) => (
                 <li key={term} className="flex gap-2">
-                  <span className="font-bold text-slate-800 shrink-0">{term}</span>
+                  <span className="font-bold text-ink-100 shrink-0">{term}</span>
                   <span>{def}</span>
                 </li>
               ))}
@@ -71,16 +71,16 @@ const PrivacyPolicy = () => {
 
           {/* Section 2 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Collecting and Using Your Personal Data</h2>
-            <h3 className="font-bold text-slate-800 mb-2">Types of Data Collected</h3>
-            <h4 className="font-semibold text-slate-700 mb-1">Personal Data</h4>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Collecting and Using Your Personal Data</h2>
+            <h3 className="font-bold text-ink-100 mb-2">Types of Data Collected</h3>
+            <h4 className="font-semibold text-ink-200 mb-1">Personal Data</h4>
             <p className="mb-4">While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You.</p>
-            <h4 className="font-semibold text-slate-700 mb-1">Usage Data</h4>
+            <h4 className="font-semibold text-ink-200 mb-1">Usage Data</h4>
             <p className="mb-2">Usage Data is collected automatically when using the Service.</p>
             <p className="mb-2">Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
             <p className="mb-4">When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device's unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
 
-            <h3 className="font-bold text-slate-800 mb-2">Tracking Technologies and Cookies</h3>
+            <h3 className="font-bold text-ink-100 mb-2">Tracking Technologies and Cookies</h3>
             <p className="mb-3">We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. The technologies We use may include:</p>
             <ul className="list-disc list-inside space-y-2 mb-4">
               <li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on Your Device. You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent.</li>
@@ -93,9 +93,9 @@ const PrivacyPolicy = () => {
                 ["Cookies Policy / Notice Acceptance Cookies", "Persistent Cookies", "These Cookies identify if users have accepted the use of cookies on the Website."],
                 ["Functionality Cookies", "Persistent Cookies", "These Cookies allow Us to remember choices You make when You use the Website, such as remembering your login details or language preference."],
               ].map(([name, type, purpose]) => (
-                <div key={name} className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-                  <p className="font-bold text-slate-800 mb-1">{name}</p>
-                  <p className="text-sm text-brand-600 mb-1">Type: {type}</p>
+                <div key={name} className="panel bg-ink-900/50 p-4">
+                  <p className="font-bold text-ink-100 mb-1">{name}</p>
+                  <p className="text-sm text-brand-400 mb-1">Type: {type}</p>
                   <p className="text-sm">{purpose}</p>
                 </div>
               ))}
@@ -104,7 +104,7 @@ const PrivacyPolicy = () => {
 
           {/* Section 3 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Use of Your Personal Data</h2>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Use of Your Personal Data</h2>
             <p className="mb-3">The Company may use Personal Data for the following purposes:</p>
             <ul className="list-disc list-inside space-y-2 mb-4">
               <li>To provide and maintain our Service, including to monitor the usage of our Service.</li>
@@ -128,7 +128,7 @@ const PrivacyPolicy = () => {
 
           {/* Section 4 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Retention of Your Personal Data</h2>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Retention of Your Personal Data</h2>
             <p className="mb-3">The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We apply different retention periods to different categories of Personal Data:</p>
             <ul className="list-disc list-inside space-y-2 mb-4">
               <li><strong>User Accounts:</strong> retained for the duration of your account relationship plus up to 24 months after account closure.</li>
@@ -140,25 +140,25 @@ const PrivacyPolicy = () => {
 
           {/* Section 5 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Transfer of Your Personal Data</h2>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Transfer of Your Personal Data</h2>
             <p className="mb-3">Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. Where required by applicable law, We will ensure that international transfers of Your Personal Data are subject to appropriate safeguards.</p>
           </section>
 
           {/* Section 6 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Delete Your Personal Data</h2>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Delete Your Personal Data</h2>
             <p className="mb-3">You have the right to delete or request that We assist in deleting the Personal Data that We have collected about You.</p>
             <p>You may update, amend, or delete Your information at any time by contacting Us directly. Please note that We may need to retain certain information when we have a legal obligation or lawful basis to do so.</p>
           </section>
 
           {/* Section 7 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Disclosure of Your Personal Data</h2>
-            <h3 className="font-bold text-slate-800 mb-2">Business Transactions</h3>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Disclosure of Your Personal Data</h2>
+            <h3 className="font-bold text-ink-100 mb-2">Business Transactions</h3>
             <p className="mb-4">If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred.</p>
-            <h3 className="font-bold text-slate-800 mb-2">Law Enforcement</h3>
+            <h3 className="font-bold text-ink-100 mb-2">Law Enforcement</h3>
             <p className="mb-4">Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities.</p>
-            <h3 className="font-bold text-slate-800 mb-2">Other Legal Requirements</h3>
+            <h3 className="font-bold text-ink-100 mb-2">Other Legal Requirements</h3>
             <ul className="list-disc list-inside space-y-2">
               <li>Comply with a legal obligation</li>
               <li>Protect and defend the rights or property of the Company</li>
@@ -170,51 +170,51 @@ const PrivacyPolicy = () => {
 
           {/* Section 8 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Security of Your Personal Data</h2>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Security of Your Personal Data</h2>
             <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially reasonable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
           </section>
 
           {/* Section 9 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Third-Party Service Providers</h2>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Third-Party Service Providers</h2>
             <p className="mb-3">The Service Providers We use may have access to Your Personal Data. These third-party vendors collect, store, use, process and transfer information about Your activity on Our Service in accordance with their Privacy Policies.</p>
-            <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-              <p className="font-bold text-slate-800 mb-1">FreshDesk</p>
+            <div className="panel bg-ink-900/50 p-4">
+              <p className="font-bold text-ink-100 mb-1">FreshDesk</p>
               <p className="text-sm mb-1">FreshDesk is a customer support software operated by Freshworks, Inc. The information gathered by FreshDesk is held in accordance with its Privacy Policy.</p>
-              <a href="https://www.freshworks.com/privacy/" target="_blank" rel="noopener noreferrer" className="text-brand-600 text-sm hover:underline">https://www.freshworks.com/privacy/</a>
+              <a href="https://www.freshworks.com/privacy/" target="_blank" rel="noopener noreferrer" className="text-brand-400 text-sm hover:underline">https://www.freshworks.com/privacy/</a>
             </div>
           </section>
 
           {/* Section 10 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Children's Privacy</h2>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Children's Privacy</h2>
             <p>Our Service does not address anyone under the age of 16. We do not knowingly collect personally identifiable information from anyone under the age of 16. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us.</p>
           </section>
 
           {/* Section 11 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Links to Other Websites</h2>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Links to Other Websites</h2>
             <p>Our Service may contain links to other websites that are not operated by Us. We strongly advise You to review the Privacy Policy of every site You visit. We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
           </section>
 
           {/* Section 12 */}
           <section>
-            <h2 className="text-xl font-black text-slate-900 mb-4 pb-2 border-b border-slate-100">Changes to this Privacy Policy</h2>
+            <h2 className="text-h3 mb-4 pb-3 border-b border-ink-800">Changes to this Privacy Policy</h2>
             <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date at the top of this Privacy Policy.</p>
           </section>
 
           {/* Contact */}
-          <section className="bg-brand-50 rounded-2xl p-6 border border-brand-100">
-            <h2 className="text-xl font-black text-slate-900 mb-4">Contact Us</h2>
+          <section className="panel bg-ink-900/50 p-6">
+            <h2 className="text-h3 mb-4">Contact Us</h2>
             <p className="mb-3">If you have any questions about this Privacy Policy, You can contact us:</p>
             <ul className="space-y-2 text-sm">
-              <li>📧 <strong>Email:</strong> <a href="mailto:visionbreathsolutions@gmail.com" className="text-brand-600 hover:underline">visionbreathsolutions@gmail.com</a></li>
-              <li>🌐 <strong>Website:</strong> <a href="https://www.visionbreathsolutions.com/contact" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">https://www.visionbreathsolutions.com/contact</a></li>
-              <li>📞 <strong>Phone:</strong> <a href="tel:+919963416422" className="text-brand-600 hover:underline">+91 9963416422</a></li>
+              <li>📧 <strong>Email:</strong> <a href="mailto:contact@visionbreathsolutions.com" className="text-brand-400 hover:underline">contact@visionbreathsolutions.com</a></li>
+              <li>🌐 <strong>Website:</strong> <a href="https://www.visionbreathsolutions.com/contact" target="_blank" rel="noopener noreferrer" className="text-brand-400 hover:underline">https://www.visionbreathsolutions.com/contact</a></li>
+              <li>📞 <strong>Phone:</strong> <a href="tel:+919963416422" className="text-brand-400 hover:underline">+91 9963416422</a></li>
             </ul>
           </section>
 
-          <p className="text-xs text-slate-400 border-t border-slate-100 pt-6">
+          <p className="text-xs text-ink-400 border-t border-ink-800 pt-6">
             Generated using Free Privacy Policy Generator · Last updated: June 27, 2026
           </p>
         </div>
