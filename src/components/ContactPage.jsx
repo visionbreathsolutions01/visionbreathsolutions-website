@@ -1,0 +1,339 @@
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { ArrowUpRight, Check, Loader2, AlertCircle } from "lucide-react";
+import SEO from "./SEO";
+import PageHero from "./ui/PageHero";
+import Reveal from "./ui/Reveal";
+import Faq from "./Faq";
+import { company, services } from "../lib/content";
+
+const DOMAIN = "https://www.visionbreathsolutions.com";
+const BUDGETS = ["Under ₹2L", "₹2L – ₹6L", "₹6L – ₹15L", "₹15L+", "Not sure yet"];
+
+// Formspree endpoint — set VITE_FORMSPREE_ID in your .env file.
+// Steps: formspree.io → New Form → set email to contact@visionbreathsolutions.com → copy Form ID
+const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID;
+const FORMSPREE_URL = FORMSPREE_ID
+  ? `https://formspree.io/f/${FORMSPREE_ID}`
+  : null;
+
+const ContactPage = () => {
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [errorMsg, setErrorMsg] = useState("");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({ mode: "onBlur" });
+
+  const onSubmit = async (data) => {
+    // Fallback: if Formspree ID not yet configured, open mailto
+    if (!FORMSPREE_URL) {
+      const body = [
+        `Name:     ${data.name}`,
+        `Company:  ${data.company || "—"}`,
+        `Email:    ${data.email}`,
+        `Phone:    ${data.phone || "—"}`,
+        `Service:  ${data.service}`,
+        `Budget:   ${data.budget}`,
+        "",
+        "Project:",
+        data.message,
+      ].join("\n");
+      window.location.href =
+        `mailto:${company.email}` +
+        `?subject=${encodeURIComponent(`New enquiry — ${data.name}${data.company ? ` (${data.company})` : ""}`)}` +
+        `&body=${encodeURIComponent(body)}`;
+      setStatus("success");
+      return;
+    }
+
+    setStatus("submitting");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          company: data.company || "",
+          email: data.email,
+          phone: data.phone || "",
+          service: data.service,
+          budget: data.budget,
+          message: data.message,
+          _subject: `New enquiry — ${data.name}${data.company ? ` (${data.company})` : ""}`,
+          _replyto: data.email,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        reset();
+      } else {
+        const json = await res.json().catch(() => ({}));
+        setErrorMsg(json?.errors?.[0]?.message || "Something went wrong. Please try again or email us directly.");
+        setStatus("error");
+      }
+    } catch {
+      setErrorMsg("Network error. Please check your connection and try again.");
+      setStatus("error");
+    }
+  };
+
+  const Err = ({ name }) =>
+    errors[name] ? (
+      <p role="alert" className="mt-1.5 font-mono text-[0.6875rem] text-red-400">
+        {errors[name].message}
+      </p>
+    ) : null;
+
+  const isSubmitting = status === "submitting";
+
+  return (
+    <>
+      <SEO
+        path="/contact"
+        title="Contact"
+        description={`Talk to ${company.legalName} about a software, AI, mobile or cloud project. Email ${company.email} or call ${company.phone}.`}
+        schema={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: `${DOMAIN}/` },
+                { "@type": "ListItem", position: 2, name: "Contact", item: `${DOMAIN}/contact` },
+              ],
+            },
+            { "@type": "ContactPage", name: `Contact ${company.legalName}`, url: `${DOMAIN}/contact` },
+          ],
+        }}
+      />
+
+      <PageHero
+        eyebrow="Contact"
+        title="Tell us what you are trying to build."
+        lead="Give us the shape of the problem and we will come back within one business day with a point of view — not a brochure."
+      />
+
+      <section className="section">
+        <div className="shell grid gap-14 lg:grid-cols-12 lg:gap-16">
+
+          {/* Direct channels */}
+          <Reveal className="lg:col-span-4">
+            <span className="eyebrow">Direct</span>
+
+            <div className="mt-7 space-y-px overflow-hidden rounded-lg border border-ink-800 bg-ink-800">
+              {[
+                { label: "WhatsApp", value: company.phone, href: `https://wa.me/${company.phoneHref.replace("+", "")}`, ext: true },
+                { label: "Email", value: company.email, href: `mailto:${company.email}` },
+                { label: "Phone", value: company.phone, href: `tel:${company.phoneHref}` },
+              ].map((c) => (
+                <a
+                  key={c.label}
+                  href={c.href}
+                  {...(c.ext ? { target: "_blank", rel: "noreferrer" } : {})}
+                  className="group flex items-center justify-between gap-4 bg-ink-900 px-5 py-4 transition-colors hover:bg-ink-800/60"
+                >
+                  <span>
+                    <span className="block font-mono text-label uppercase text-ink-400">{c.label}</span>
+                    <span className="mt-1.5 block break-all text-sm text-white">{c.value}</span>
+                  </span>
+                  <ArrowUpRight
+                    size={15}
+                    className="shrink-0 text-ink-600 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
+                  />
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-10">
+              <span className="font-mono text-label uppercase text-ink-400">Office</span>
+              <address className="mt-3 not-italic text-sm leading-relaxed text-ink-300">
+                {company.address.line1}<br />
+                {company.address.line2}
+              </address>
+            </div>
+
+            <div className="mt-10">
+              <span className="font-mono text-label uppercase text-ink-400">Hours</span>
+              <p className="mt-3 text-sm text-ink-300">
+                Monday to Saturday, 9:00 – 18:30 IST.<br />
+                We keep a fixed overlap window for clients in other time zones.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Enquiry form */}
+          <Reveal delay={0.08} className="lg:col-span-8">
+            {status === "success" ? (
+              <div className="panel flex min-h-[420px] flex-col items-start justify-center p-9 sm:p-12">
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-ink-950 text-white">
+                  <Check size={19} strokeWidth={2.4} />
+                </span>
+                <h2 className="mt-7 text-h3">
+                  {FORMSPREE_URL ? "Enquiry received — thank you!" : "Your email client should now be open."}
+                </h2>
+                <p className="mt-4 max-w-[46ch] text-sm text-ink-400">
+                  {FORMSPREE_URL
+                    ? `We've received your message and will reply to ${" "}`
+                    : "Send the message it has composed and it will reach us directly. If nothing opened, write to "}
+                  <a href={`mailto:${company.email}`} className="link">{company.email}</a>
+                  {FORMSPREE_URL
+                    ? " within one business day."
+                    : " or message us on WhatsApp — either reaches the same inbox."}
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href={`https://wa.me/${company.phoneHref.replace("+", "")}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-primary"
+                  >
+                    Message on WhatsApp <ArrowUpRight size={15} strokeWidth={2.2} />
+                  </a>
+                  <button type="button" onClick={() => setStatus("idle")} className="btn-outline">
+                    Send another
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} noValidate className="panel p-7 sm:p-10">
+                <h2 className="text-h3">Project enquiry</h2>
+                <p className="mt-2.5 text-sm text-ink-400">
+                  Fields marked with an asterisk are required.
+                </p>
+
+                {/* Error banner */}
+                {status === "error" && (
+                  <div className="mt-6 flex items-start gap-3 rounded-lg border border-red-800/60 bg-red-950/40 px-4 py-3">
+                    <AlertCircle size={16} className="mt-0.5 shrink-0 text-red-400" />
+                    <p className="text-sm text-red-300">{errorMsg}</p>
+                  </div>
+                )}
+
+                <div className="mt-9 grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="name" className="field-label">Name *</label>
+                    <input
+                      id="name"
+                      className="field"
+                      placeholder="Your name"
+                      aria-invalid={!!errors.name}
+                      {...register("name", { required: "Please tell us your name" })}
+                    />
+                    <Err name="name" />
+                  </div>
+
+                  <div>
+                    <label htmlFor="company" className="field-label">Company</label>
+                    <input id="company" className="field" placeholder="Organisation" {...register("company")} />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="field-label">Email *</label>
+                    <input
+                      id="email"
+                      type="email"
+                      className="field"
+                      placeholder="you@company.com"
+                      aria-invalid={!!errors.email}
+                      {...register("email", {
+                        required: "We need an email to reply to",
+                        pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "That address doesn't look right" },
+                      })}
+                    />
+                    <Err name="email" />
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="field-label">Phone</label>
+                    <input id="phone" type="tel" className="field" placeholder="Optional" {...register("phone")} />
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="field-label">What do you need? *</label>
+                    <select
+                      id="service"
+                      className="field"
+                      defaultValue=""
+                      aria-invalid={!!errors.service}
+                      {...register("service", { required: "Pick the closest match" })}
+                    >
+                      <option value="" disabled>Select an area</option>
+                      {services.map((s) => <option key={s.slug} value={s.title}>{s.title}</option>)}
+                      <option value="Something else">Something else</option>
+                    </select>
+                    <Err name="service" />
+                  </div>
+
+                  <div>
+                    <label htmlFor="budget" className="field-label">Budget range *</label>
+                    <select
+                      id="budget"
+                      className="field"
+                      defaultValue=""
+                      aria-invalid={!!errors.budget}
+                      {...register("budget", { required: "A rough range is enough" })}
+                    >
+                      <option value="" disabled>Select a range</option>
+                      {BUDGETS.map((b) => <option key={b} value={b}>{b}</option>)}
+                    </select>
+                    <Err name="budget" />
+                  </div>
+
+                  <div className="sm:col-span-2">
+                    <label htmlFor="message" className="field-label">The project *</label>
+                    <textarea
+                      id="message"
+                      rows={6}
+                      className="field resize-y"
+                      placeholder="What are you building, who is it for, and what is forcing the timeline?"
+                      aria-invalid={!!errors.message}
+                      {...register("message", {
+                        required: "A couple of sentences is plenty",
+                        minLength: { value: 20, message: "A little more detail would help" },
+                      })}
+                    />
+                    <Err name="message" />
+                  </div>
+                </div>
+
+                <div className="mt-9 flex flex-col gap-4 border-t border-ink-800 pt-7 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="max-w-[40ch] font-mono text-[0.6875rem] leading-relaxed text-ink-400">
+                    {FORMSPREE_URL
+                      ? `Your message goes directly to ${company.email}. We reply within one business day.`
+                      : "Sending opens your email client with this enquiry composed. We reply within one business day."}
+                  </p>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-primary btn-lg shrink-0 disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 size={16} strokeWidth={2.2} className="animate-spin" />
+                        Sending…
+                      </>
+                    ) : (
+                      <>
+                        Send enquiry <ArrowUpRight size={16} strokeWidth={2.2} />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
+          </Reveal>
+        </div>
+      </section>
+
+      <Faq />
+    </>
+  );
+};
+
+export default ContactPage;
