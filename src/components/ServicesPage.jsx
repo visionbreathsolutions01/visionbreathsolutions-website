@@ -86,7 +86,7 @@ const ServicesPage = () => (
             </div>
 
             <Link to="/contact" className="btn-primary mt-9">
-              Discuss a {s.title.toLowerCase()} project
+              Discuss your project
               <ArrowUpRight size={15} strokeWidth={2.2} />
             </Link>
           </Reveal>

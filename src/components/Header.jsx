@@ -34,9 +34,11 @@ const Header = () => {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "bg-ink-950/85 backdrop-blur-xl border-b border-ink-800 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.6)]"
-          : "bg-ink-950/40 backdrop-blur-md border-b border-transparent"
+        open
+          ? "bg-ink-950 border-b border-ink-800"
+          : scrolled
+            ? "bg-ink-950/85 backdrop-blur-xl border-b border-ink-800 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.6)]"
+            : "bg-ink-950/40 backdrop-blur-md border-b border-transparent"
       }`}
     >
       {/* Reading-progress beam along the header's bottom edge */}
@@ -51,7 +53,7 @@ const Header = () => {
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label={`${company.legalName} — home`}>
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-white p-1"><img src={logo} alt="" className="h-full w-auto object-contain" width="36" height="36" /></span>
-          <span className="hidden sm:flex flex-col leading-none">
+          <span className="flex flex-col leading-none">
             <span className="font-display text-[0.9375rem] font-bold tracking-[-0.02em] text-white">
               Vision Breath
             </span>
