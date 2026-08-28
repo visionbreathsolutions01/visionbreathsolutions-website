@@ -147,6 +147,16 @@ export const process = [
 
 export const work = [
   {
+    slug: "bible-college",
+    client: "Bible College Website",
+    title: "A modern educational website for a Bible college",
+    summary:
+      "A complete website for a Bible college — programme and course information, admissions, faculty and ministry details, events, campus information, student resources, and contact/enquiry options for prospective students, parents, and visitors.",
+    scope: ["Web platform", "Educational", "Portal"],
+    stack: ["React", "Node.js", "MongoDB"],
+    year: "2026",
+  },
+  {
     slug: "support-chatbot",
     client: "Customer Service AI",
     title: "An AI chatbot that answers customer queries from company knowledge",

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Bot, Boxes, ShoppingBag, Building2, Pill, Braces } from "lucide-react";
+import { Bot, Boxes, ShoppingBag, Building2, Pill, Braces, GraduationCap } from "lucide-react";
 
 /**
  * Abstract cover tile per project — honest visuals (no fake screenshots),
@@ -7,6 +7,7 @@ import { Bot, Boxes, ShoppingBag, Building2, Pill, Braces } from "lucide-react";
  * to the project slug so each cover is distinct yet clearly one family.
  */
 const COVERS = {
+  "bible-college":        { Icon: GraduationCap, from: "from-amber-600/45",  to: "to-red-600/25" },
   "support-chatbot":      { Icon: Bot,        from: "from-brand-600/50",  to: "to-violet-600/25" },
   "inventory-management": { Icon: Boxes,      from: "from-sky-600/40",    to: "to-brand-600/25" },
   "household-ecommerce":  { Icon: ShoppingBag,from: "from-violet-500/50", to: "to-fuchsia-500/30" },

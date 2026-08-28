@@ -53,11 +53,11 @@ const Header = () => {
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label={`${company.legalName} — home`}>
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-white p-1"><img src={logo} alt="" className="h-full w-auto object-contain" width="36" height="36" /></span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-[0.9375rem] font-bold tracking-[-0.02em] text-white">
+          <span className="flex flex-col md:flex-row md:items-center md:gap-1.5 leading-none">
+            <span className="font-display text-[0.9375rem] font-bold tracking-[-0.02em] text-white whitespace-nowrap">
               Vision Breath
             </span>
-            <span className="mt-1 font-mono text-[0.5625rem] uppercase tracking-[0.16em] text-ink-400">
+            <span className="mt-1 md:mt-0 font-display text-[0.9375rem] font-bold tracking-[-0.02em] text-white whitespace-nowrap">
               Solutions Pvt. Ltd.
             </span>
           </span>
@@ -108,45 +108,35 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile sheet */}
+      {/* Mobile dropdown */}
       <div
         id="mobile-nav"
         hidden={!open}
-        className="md:hidden fixed inset-x-0 bottom-0 top-[68px] bg-ink-950 overflow-y-auto"
+        className="md:hidden absolute left-0 right-0 top-[68px] border-b border-ink-800 bg-ink-950/95 backdrop-blur-xl shadow-lg"
       >
-        <div className="shell flex min-h-full flex-col py-8">
-          <nav aria-label="Mobile" className="flex flex-col">
-            {nav.map((item, i) => (
+        <div className="shell py-5 space-y-4">
+          <nav aria-label="Mobile" className="flex flex-col gap-3">
+            {nav.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
                 end={item.path === "/"}
                 className={({ isActive }) =>
-                  `flex items-center justify-between border-b border-ink-800 py-5 font-display text-2xl tracking-[-0.03em] transition-colors ${
-                    isActive ? "text-white" : "text-ink-500"
+                  `text-sm font-medium tracking-wide transition-colors py-1.5 ${
+                    isActive ? "text-white" : "text-ink-400 hover:text-white"
                   }`
                 }
               >
                 {item.label}
-                <span className="font-mono text-[0.625rem] text-ink-600">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
               </NavLink>
             ))}
           </nav>
 
-          <Link to="/contact" className="btn-primary btn-lg mt-8 w-full">
-            Start a project
-            <ArrowUpRight size={16} strokeWidth={2.2} />
-          </Link>
-
-          <div className="mt-auto pt-10 font-mono text-xs text-ink-500">
-            <a href={`mailto:${company.email}`} className="block hover:text-white transition-colors">
-              {company.email}
-            </a>
-            <a href={`tel:${company.phoneHref}`} className="mt-2 block hover:text-white transition-colors">
-              {company.phone}
-            </a>
+          <div className="border-t border-ink-800 pt-4">
+            <Link to="/contact" className="btn-primary w-full justify-center py-2 text-sm">
+              Start a project
+              <ArrowUpRight size={14} strokeWidth={2.2} />
+            </Link>
           </div>
         </div>
       </div>
