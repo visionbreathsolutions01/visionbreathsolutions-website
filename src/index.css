@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Vision Breath Solutions — design system
+   One ink scale, one accent, hairline borders, restrained motion.
+   ============================================================ */
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    background: #0B0B10;
+    color: theme('colors.ink.300');
+    font-family: theme('fontFamily.sans');
+    font-size: 1rem;
+    line-height: 1.65;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: theme('fontFamily.display');
+    color: #FFFFFF;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+  button { font: inherit; color: inherit; }
+
+  ::selection { background: theme('colors.brand.600'); color: #fff; }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.brand.400');
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0B0B10; }
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.ink.700');
+    border: 3px solid #0B0B10;
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: theme('colors.ink.600'); }
+}
+
+@layer components {
+
+  /* ---------- Layout ---------- */
+  .shell   { @apply w-full max-w-shell mx-auto px-5 sm:px-8 lg:px-10; }
+  .section { @apply py-14 sm:py-20 lg:py-24; }
+  .rule    { @apply border-t border-ink-800; }
+
+  /* ---------- Eyebrow label ---------- */
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 font-mono text-label uppercase text-ink-400;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply w-5 h-px bg-ink-600;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md font-medium text-sm
+           whitespace-nowrap transition-all duration-200 ease-out select-none;
+    padding: 0.6875rem 1.125rem;
+  }
+
+  .btn-primary {
+    @apply btn text-white shadow-cta relative overflow-hidden;
+    background: linear-gradient(120deg, #4F46E5, #7C3AED);
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%);
+    transform: translateX(-130%);
+    animation: shine 4.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .btn-primary:hover { filter: brightness(1.15); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-accent {
+    @apply btn bg-brand-600 text-white shadow-cta;
+  }
+  .btn-accent:hover { @apply bg-brand-700; transform: translateY(-1px); }
+
+  .btn-outline {
+    @apply btn bg-transparent text-ink-200 border border-ink-700;
+  }
+  .btn-outline:hover { @apply border-ink-500 bg-ink-800/60 text-white; }
+
+  .btn-ghost {
+    @apply btn text-ink-400 px-3;
+  }
+  .btn-ghost:hover { @apply text-white bg-ink-800; }
+
+  .btn-lg { padding: 0.875rem 1.5rem; @apply text-[0.9375rem]; }
+
+  /* Inline text link with a sliding underline */
+  .link {
+    @apply inline-flex items-center gap-1.5 font-medium text-sm text-white
+           transition-colors duration-200;
+    box-shadow: inset 0 -1px 0 theme('colors.ink.600');
+  }
+  .link:hover { @apply text-brand-300; box-shadow: inset 0 -1px 0 theme('colors.brand.400'); }
+
+  /* ---------- Surfaces ---------- */
+  .panel {
+    @apply bg-ink-900/70 border border-ink-800 rounded-lg;
+  }
+  .panel-hover {
+    @apply panel transition-all duration-300 ease-out;
+  }
+  .panel-hover:hover {
+    @apply border-ink-700 shadow-lift;
+    transform: translateY(-2px);
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-sm border border-ink-700 bg-ink-900
+           px-2 py-1 font-mono text-[0.6875rem] tracking-wide text-ink-300;
+  }
+
+  /* ---------- Form controls ---------- */
+  .field {
+    @apply w-full rounded-md border border-ink-700 bg-ink-900 px-3.5 py-3 text-sm
+           text-white transition-all duration-200 outline-none;
+  }
+  .field::placeholder { @apply text-ink-500; }
+  .field:focus {
+    @apply border-brand-400;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+  }
+  .field-label {
+    @apply block mb-2 font-mono text-label uppercase text-ink-400;
+  }
+
+  /* ---------- Copy blocks ---------- */
+  .prose-block { @apply max-w-prose text-body text-ink-300; }
+  .prose-block p + p { @apply mt-4; }
+}
+
+@layer utilities {
+  /* Cursor-tracking glow — set --mx/--my from JS, the card lights up under the pointer */
+  .spotlight-card { position: relative; }
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%),
+                rgba(139,92,246,0.16), transparent 65%);
+    pointer-events: none;
+  }
+  .spotlight-card:hover::before { opacity: 1; }
+
+  /* A pulse of light that travels along a section's top edge */
+  .beam-top { position: relative; }
+  .beam-top::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.9), rgba(56,189,248,0.6), transparent);
+    background-size: 40% 100%;
+    background-repeat: no-repeat;
+    animation: beam 6s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Desktop nav: gradient underline slides in on hover / stays on the active page */
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.3rem;
+    height: 1px;
+    background: linear-gradient(90deg, #818CF8, #A78BFA);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-link:hover::after,
+  .nav-link.nav-active::after { transform: scaleX(1); }
+
+  /* Floating hero particles */
+  .particle {
+    animation-name: particle-float;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  /* Icon chips wiggle when their card is hovered */
+  .icon-pop { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+  .group:hover .icon-pop { transform: scale(1.12) rotate(-6deg); }
+
+  /* Hover pauses the stack marquee so the words can actually be read */
+  .marquee-pause:hover .animate-marquee,
+  .marquee-pause:hover .animate-marquee-rev { animation-play-state: paused; }
+
+  /* Brand gradient text — the one flourish allowed in headlines */
+  .text-gradient {
+    background: linear-gradient(105deg, #4F46E5 0%, #7C3AED 48%, #0EA5E9 100%);
+    background-size: 180% 180%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  /* Soft aurora orb — animated colour without sacrificing legibility */
+  .orb {
+    @apply pointer-events-none absolute rounded-full;
+    filter: blur(90px);
+  }
+
+  /* Card glow on hover */
+  .glow-hover { transition: box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease; }
+  .glow-hover:hover {
+    box-shadow: 0 18px 44px -14px rgba(124,58,237,0.35), 0 4px 12px -4px rgba(0,0,0,0.4);
+  }
+
+  /* Faint grid used behind the hero — structure, not decoration */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .mask-fade-b   { mask-image: linear-gradient(to bottom, #000 0%, transparent 100%); }
+  .mask-fade-x   { mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+  .text-balance  { text-wrap: balance; }
+  .text-pretty   { text-wrap: pretty; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar  { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.35; }
+  50%      { transform: translateY(-26px) scale(1.4); opacity: 0.9; }
+}
+
+@keyframes shine {
+  0%, 55% { transform: translateX(-130%); }
+  100%    { transform: translateX(130%); }
+}
+
+@keyframes beam {
+  0%   { background-position: -60% 0; }
+  100% { background-position: 170% 0; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* Respect the OS setting — the site is otherwise fully animated */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
