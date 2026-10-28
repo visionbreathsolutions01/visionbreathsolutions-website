@@ -1,0 +1,9 @@
+# http://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.visionbreathsolutions.com/
+
+# Sitemaps
+Sitemap: https://www.visionbreathsolutions.com/sitemap.xml
